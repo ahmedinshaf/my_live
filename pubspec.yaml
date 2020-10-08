@@ -19,7 +19,26 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hexcolor: ^1.0.4  
+  hexcolor: ^1.0.4
+  shared_preferences: 0.5.7
+  agora_rtc_engine: ^1.0.13
+  agora_rtm: ^0.9.12
+  permission_handler: ^3.0.0
+  intl: ^0.16.1 
+  random_color: ^1.0.5
+  font_awesome_flutter: 8.8.1
+  video_player: ^0.10.11+2
+  flare_flutter: ^2.0.6
+  cloud_firestore: ^0.12.9+5
+  cached_network_image: 2.2.0+1
+  wakelock: ^0.1.4+1
+  fluttertoast: ^7.0.2
+  firebase_storage: 3.1.5
+  firebase_auth_web: ^0.1.2
+  firebase_auth: ^0.14.0+5
+  google_sign_in: ^4.2.0
+  flutter_slidable: ^0.5.7
+  shimmer: ^1.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -8,6 +8,8 @@ import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_auth/grid_view/categories.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../constants.dart';
+
 class Body extends StatelessWidget {
   const Body({
     Key key,
@@ -50,6 +52,11 @@ class Body extends StatelessWidget {
                   ),
                 );
               },
+            ),
+            SizedBox(height: size.height * 0.03),
+            Text(
+              "Forgot Password ?  ",
+              style: TextStyle(color: kPrimaryColor),
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

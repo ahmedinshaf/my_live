@@ -71,11 +71,11 @@ class Body extends StatelessWidget {
                   press: () {},
                 ),
                 SocalIcon(
-                  iconSrc: "assets/icons/twitter.svg",
+                  iconSrc: "assets/icons/google-plus.svg",
                   press: () {},
                 ),
                 SocalIcon(
-                  iconSrc: "assets/icons/google-plus.svg",
+                  iconSrc: "assets/icons/apple.svg",
                   press: () {},
                 ),
               ],
