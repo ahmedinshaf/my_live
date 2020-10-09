@@ -31,14 +31,15 @@ class _ChatListPageViewState extends State<ChatListPageView> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80),
           child: AppBar(
+            centerTitle: true,
             backgroundColor: Colors.white,
             elevation: 0,
             iconTheme: IconThemeData(
               color: Color(0xff00DBD4),
             ),
-            centerTitle: true,
+            // centerTitle: true,
             title: Padding(
-              padding: const EdgeInsets.only(right: 100),
+              padding: const EdgeInsets.only(right: 0),
               child: Text(
                 'Messages',
                 style: TextStyle(color: Color(0xff00DBD4), fontSize: 35),

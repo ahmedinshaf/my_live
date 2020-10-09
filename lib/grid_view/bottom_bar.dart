@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/grid_view/cookie_page.dart';
 import 'package:flutter_auth/profile/user_profile.dart';
 
 class BottomBar extends StatelessWidget {
@@ -32,8 +33,17 @@ class BottomBar extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Icon(Icons.home, color: Color(0xff00DBD4)),
-                          // Icon(Icons.person_outline, color: Color(0xFF676E79))
+                          IconButton(
+                              icon: Icon(
+                                Icons.home,
+                                color: Color(0xff00DBD4),
+                              ),
+                              onPressed: () {
+                                // Navigator.pushReplacement(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => CookiePage()));
+                              })
                         ],
                       )),
                   Container(
@@ -56,7 +66,8 @@ class BottomBar extends StatelessWidget {
                                 color: Color(0xFF676E79),
                               ),
                               onPressed: () {
-                                Navigator.push(
+                                // Navigator.pop(context);
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => UserProile()));

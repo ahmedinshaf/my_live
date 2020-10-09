@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/Screens/messages/ChatListPageView.dart';
 
@@ -40,7 +41,10 @@ class UserProile extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SearchBarScreen()));
+            },
           ),
           IconButton(
             icon: Icon(Icons.radio, color: Colors.black),

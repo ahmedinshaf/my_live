@@ -5,20 +5,21 @@ class CookiePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFAF8),
+      backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
           SizedBox(height: 15.0),
           Container(
-              padding: EdgeInsets.only(right: 20.0),
+              // padding: EdgeInsets.only(right: 20.0),
+              padding: EdgeInsets.fromLTRB(0, 0, 18, 0),
               width: MediaQuery.of(context).size.width - 30.0,
               height: MediaQuery.of(context).size.height - 30.0,
               child: GridView.count(
                 crossAxisCount: 2,
                 primary: false,
-                crossAxisSpacing: 2.0,
-                mainAxisSpacing: 2.0,
-                childAspectRatio: 0.8,
+                crossAxisSpacing: 0.0,
+                mainAxisSpacing: 0.888,
+                childAspectRatio: 0.93,
                 children: <Widget>[
                   _buildCard('assets/images/girl.jpg', context),
                   _buildCard('assets/images/girl_two.jpg', context),
@@ -56,7 +57,7 @@ class CookiePage extends StatelessWidget {
                 //     color: Colors.white),
                 child: Column(children: [
               Padding(
-                  padding: EdgeInsets.all(1.9),
+                  padding: EdgeInsets.all(0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     // children: [
@@ -69,15 +70,38 @@ class CookiePage extends StatelessWidget {
               Hero(
                   tag: imgPath,
                   child: Container(
-                      height: 175.0,
-                      width: 175.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35.0),
-                          border: Border.all(
-                            color: Color(0xff00DBD4),
-                          ),
-                          image: DecorationImage(
-                              image: AssetImage(imgPath), fit: BoxFit.cover)))),
+                    // child: Text('Test',
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontSize: 20.0,
+                    //     )),
+                    height: 165.0,
+                    width: 175.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                      border: Border.all(
+                        color: Color(0xff00DBD4),
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage(imgPath), fit: BoxFit.cover),
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.only(top: 135, left: 10),
+                      alignment: Alignment.bottomLeft,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Test",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
               // SizedBox(height: 7.0),
               // Text(price,
               //     style: TextStyle(
@@ -93,7 +117,7 @@ class CookiePage extends StatelessWidget {
               //     padding: EdgeInsets.all(0.0),
               //     child: Container(color: Color(0xFFEBEBEB), height: 1.0)),
               Padding(
-                  padding: EdgeInsets.only(left: 0.0, right: 0.0),
+                  padding: EdgeInsets.only(top: 0.0, bottom: 0.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

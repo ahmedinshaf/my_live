@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
 
@@ -42,7 +43,10 @@ class _MyHomePageState extends State<MyHomePage>
             icon: Icon(Icons.search, color: Color(0xFF545D68)),
             alignment: Alignment.centerLeft,
             padding: new EdgeInsets.all(0),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SearchBarScreen()));
+            },
           ),
           IconButton(
             icon: Icon(Icons.notifications_none, color: Color(0xFF545D68)),
