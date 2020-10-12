@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/live_stream/live_stream.dart';
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
@@ -104,8 +105,8 @@ class _MyHomePageState extends State<MyHomePage>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //     context, MaterialPageRoute(builder: (context) => HomePageLive()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeLive()));
         },
         backgroundColor: Color(0xff00DBD4),
         child: Icon(liveStream),
