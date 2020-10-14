@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:video_player/video_player.dart';
-import 'dart:math' as math;
 
 class HomeLive extends StatefulWidget {
   @override
@@ -47,131 +45,157 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
         children: <Widget>[
           homescreen(),
           footer(),
-          Padding(
-            padding: EdgeInsets.only(bottom: 100),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                width: MediaQuery.of(context).size.width - 100,
-                height: 100,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 0.0, horizontal: 7.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(top: 38),
-                            ),
-                            // FlatButton(
-                            //   shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(35)),
-                            //   color: Colors.white24,
-
-                            //   onPressed: () {
-                            //     // Navigator.push(
-                            //     //     context,
-                            //     //     MaterialPageRoute(
-                            //     //         builder: (context) => ChatListPageView()));
-                            //   },
-                            //   child: Text(
-                            //     "Lorem ipsum dolor sit amet",
-                            //     style: TextStyle(
-                            //       color: Colors.white,
-                            //       fontSize: 12,
-                            //       fontStyle: FontStyle.normal,
-                            //     ),
-                            //   ),
-                            //   // color: Colors.white,
-                            // )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 0.0, horizontal: 7.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 0),
-                              ),
-                              FlatButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(35)),
-                                color: Colors.black45,
-
-                                onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) => ChatListPageView()));
-                                },
-                                child: Text(
-                                  "Lorem ipsum dolor sit amet",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontStyle: FontStyle.normal,
-                                  ),
-                                ),
-                                // color: Colors.white,
-                              )
-                            ],
+          Positioned(
+            bottom: 580,
+            left: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                  decoration: BoxDecoration(
+                      color: Colors.black38,
+                      borderRadius: BorderRadius.all(Radius.circular(35))),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                        child: CircleAvatar(
+                          radius: 14,
+                          backgroundColor: Colors.pink,
+                          child: CircleAvatar(
+                            radius: 12,
+                            backgroundImage:
+                                AssetImage('assets/images/girl.jpg'),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "Emmely",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                          decoration: BoxDecoration(
+                              color: Color(0xff00DBD4),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          child: Icon(
+                            Icons.add,
+                            size: 15,
+                          )),
+                    ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                // Divider(color: Colors.white.withOpacity(0.5)),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                            padding: EdgeInsets.only(left: 1, right: 0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 4, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.black38,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(35))),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 4, vertical: 4),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(30))),
+                                          child: Icon(
+                                            Icons.star,
+                                            size: 15,
+                                            color: Colors.white,
+                                          )),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        '3 Star',
+                                        style: TextStyle(color: Colors.white),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                // Icon(Icons.home,
+                                //     color: Colors.white.withOpacity(0.8), size: 30),
+                                // Text('Accueil',
+                                //     style: TextStyle(color: Colors.white, fontSize: 10))
+                              ],
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(left: 5, right: 11),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 4, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.black38,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(35))),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 4, vertical: 4),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(30))),
+                                          child: Icon(
+                                            Icons.fireplace,
+                                            size: 15,
+                                            color: Colors.white,
+                                          )),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text("12.3k",
+                                          style: TextStyle(color: Colors.white))
+                                    ],
+                                  ),
+                                ),
+                                // Text('Découvrir',
+                                //     style: TextStyle(
+                                //         color: Colors.white.withOpacity(0.8),
+                                //         fontSize: 10))
+                              ],
+                            )),
+                        // Padding(
+                        //     padding: EdgeInsets.only(left: 20, right: 3),
+                        //     child: buttonplus()),
+
+                        Padding(padding: EdgeInsets.only(left: 90)),
+                      ],
+                    ))
+              ],
             ),
           ),
-
-          //   Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: <Widget>[
-          //       FlatButton(
-          //           onPressed: () {
-          //             setState(() {
-          //               abo = true;
-          //               foryou = false;
-          //             });
-          //           },
-          //           child: Text('Abonnements',
-          //               style: abo
-          //                   ? TextStyle(
-          //                       color: Colors.white,
-          //                       fontWeight: FontWeight.bold,
-          //                       fontSize: 18)
-          //                   : TextStyle(color: Colors.white, fontSize: 16))),
-          //       Text('|', style: TextStyle(color: Colors.white, fontSize: 5)),
-          //       FlatButton(
-          //           onPressed: () {
-          //             setState(() {
-          //               abo = false;
-          //               foryou = true;
-          //             });
-          //           },
-          //           child: Text('Pour Toi',
-          //               style: foryou
-          //                   ? TextStyle(
-          //                       color: Colors.white,
-          //                       fontWeight: FontWeight.bold,
-          //                       fontSize: 18)
-          //                   : TextStyle(color: Colors.white, fontSize: 16))),
-          //     ],
-          //   )
         ],
       ),
     );
@@ -211,7 +235,7 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                       child: VideoPlayer(_controller),
                     )),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 70),
+                  padding: EdgeInsets.only(bottom: 45),
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Container(
@@ -232,27 +256,35 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                                     padding: EdgeInsets.only(left: 0),
                                   ),
                                   FlatButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(35)),
-                                    color: Colors.black45,
-
-                                    onPressed: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => ChatListPageView()));
-                                    },
-                                    child: Text(
-                                      "Lorem ipsum dolor sit amet",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontStyle: FontStyle.normal,
-                                      ),
-                                    ),
-                                    // color: Colors.white,
-                                  )
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(35)),
+                                      color: Colors.black45,
+                                      onPressed: () {
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => ChatListPageView()));
+                                      },
+                                      child: RichText(
+                                          text: TextSpan(
+                                              text: 'Sam',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.0,
+                                              ),
+                                              children: <TextSpan>[
+                                            TextSpan(
+                                                text: ' beautiful beautiful',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 14.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ))
+                                          ]))
+                                      // color: Colors.white,
+                                      )
                                 ],
                               ),
                             ),
@@ -271,27 +303,36 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                                       padding: EdgeInsets.only(top: 28),
                                     ),
                                     FlatButton(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(35)),
-                                      color: Colors.black45,
-
-                                      onPressed: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => ChatListPageView()));
-                                      },
-                                      child: Text(
-                                        "Lorem ipsum dolor sit amet",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontStyle: FontStyle.normal,
-                                        ),
-                                      ),
-                                      // color: Colors.white,
-                                    )
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(35)),
+                                        color: Colors.black45,
+                                        onPressed: () {
+                                          // Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) => ChatListPageView()));
+                                        },
+                                        child: RichText(
+                                            text: TextSpan(
+                                                text: 'Sam',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                ),
+                                                children: <TextSpan>[
+                                              TextSpan(
+                                                  text: ' beautiful beautiful',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ))
+                                            ]))
+                                        // color: Colors.white,
+                                        )
                                   ],
                                 ),
                               ),
@@ -312,36 +353,6 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-                            // Container(
-                            //   margin: EdgeInsets.only(bottom: 23),
-                            //   width: 40,
-                            //   height: 50,
-                            //   child: Stack(
-                            //     children: <Widget>[
-                            //       CircleAvatar(
-                            //         radius: 20,
-                            //         backgroundColor: Colors.white,
-                            //         child: CircleAvatar(
-                            //           radius: 19,
-                            //           backgroundColor: Colors.black,
-                            //           backgroundImage:
-                            //               AssetImage('assets/spook.png'),
-                            //         ),
-                            //       ),
-                            //       Align(
-                            //         alignment: Alignment.bottomCenter,
-                            //         child: CircleAvatar(
-                            //           radius: 10,
-                            //           backgroundColor:
-                            //               Color(0xfd2c58).withOpacity(1),
-                            //           child: Center(
-                            //               child: Icon(Icons.add,
-                            //                   size: 15, color: Colors.white)),
-                            //         ),
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
                             Container(
                               padding: EdgeInsets.only(bottom: 0),
                               child: Column(
@@ -349,59 +360,9 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                                 children: <Widget>[
                                   Icon(Icons.favorite,
                                       size: 55, color: Color(0xff00DBD4)),
-                                  // Text('427.9K',
-                                  //     style: TextStyle(color: Colors.white))
                                 ],
                               ),
                             ),
-                            // Container(
-                            //   padding: EdgeInsets.only(bottom: 20),
-                            //   child: Column(
-                            //     crossAxisAlignment: CrossAxisAlignment.center,
-                            //     children: <Widget>[
-                            //       Transform(
-                            //           alignment: Alignment.center,
-                            //           transform: Matrix4.rotationY(math.pi),
-                            //           child: Icon(Icons.sms,
-                            //               size: 35, color: Colors.white)),
-                            //       Text('2051',
-                            //           style: TextStyle(color: Colors.white))
-                            //     ],
-                            //   ),
-                            // ),
-                            // Container(
-                            //   padding: EdgeInsets.only(bottom: 50),
-                            //   child: Column(
-                            //     crossAxisAlignment: CrossAxisAlignment.center,
-                            //     children: <Widget>[
-                            //       Transform(
-                            //           alignment: Alignment.center,
-                            //           transform: Matrix4.rotationY(math.pi),
-                            //           child: Icon(Icons.reply,
-                            //               size: 35, color: Colors.white)),
-                            //       Text('Partager',
-                            //           style: TextStyle(color: Colors.white))
-                            //     ],
-                            //   ),
-                            // ),
-                            // AnimatedBuilder(
-                            //   animation: animationController,
-                            //   child: CircleAvatar(
-
-                            //     radius: 22,
-                            //     backgroundColor: Color(0x222222).withOpacity(1),
-                            //     child: CircleAvatar(
-                            //       radius: 12,
-                            //       backgroundImage:
-                            //           AssetImage('assets/images/girl.jpg'),
-                            //     ),
-                            //   ),
-                            //   builder: (context, _widget) {
-                            //     return Transform.rotate(
-                            //         angle: animationController.value * 6.3,
-                            //         child: _widget);
-                            //   },
-                            // )
                           ],
                         ),
                       ),
@@ -417,133 +378,9 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
           color: Colors.black,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            //   children: <Widget>[
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: <Widget>[
-            //         Container(
-            //             padding: EdgeInsets.only(bottom: 14),
-            //             child: Text(
-            //               'Créateurs tendances',
-            //               style: TextStyle(color: Colors.white, fontSize: 20),
-            //             ))
-            //       ],
-            //     ),
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: <Widget>[
-            //         Center(
-            //           child: Container(
-            //             child: Column(
-            //               children: <Widget>[
-            //                 Center(
-            //                   child: Text(
-            //                       'Abonne-toi à un compte pour découvrir ses',
-            //                       style: TextStyle(
-            //                           color: Colors.white.withOpacity(0.8))),
-            //                 ),
-            //                 Center(
-            //                   child: Text('dernières vidéos ici.',
-            //                       style: TextStyle(
-            //                           color: Colors.white.withOpacity(0.8))),
-            //                 )
-            //               ],
-            //             ),
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //     Container(
-            //       height: 372,
-            //       margin: EdgeInsets.only(top: 25),
-            //       child: PageView.builder(
-            //           dragStartBehavior: DragStartBehavior.down,
-            //           controller: pageController,
-            //           itemCount: 5,
-            //           itemBuilder: (context, position) {
-            //             return videoSlider(position);
-            //           }),
-            //     )
-            //   ],
           ));
     }
   }
-
-  // videoSlider(int index) {
-  //   return AnimatedBuilder(
-  //     animation: pageController,
-  //     builder: (context, widget) {
-  //       double value = 1;
-  //       if (pageController.position.haveDimensions) {
-  //         value = pageController.page - index;
-  //         value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
-  //       }
-  //       return Center(
-  //         child: SizedBox(
-  //           height: Curves.easeInOut.transform(value) * 372,
-  //           width: Curves.easeInOut.transform(value) * 300,
-  //           child: widget,
-  //         ),
-  //       );
-  //     },
-  //     child: Stack(
-  //       children: <Widget>[
-  //         ClipRRect(
-  //           borderRadius: BorderRadius.all(Radius.circular(10)),
-  //           child: VideoPlayer(_controller),
-  //         ),
-  //         Align(
-  //             alignment: Alignment.topRight,
-  //             child: Padding(
-  //               padding: EdgeInsets.all(5),
-  //               child: Icon(
-  //                 Icons.close,
-  //                 size: 15,
-  //                 color: Colors.white,
-  //               ),
-  //             )),
-  //         Align(
-  //           alignment: Alignment.bottomCenter,
-  //           child: Container(
-  //             margin: EdgeInsets.only(bottom: 15),
-  //             height: 370 / 2,
-  //             child: Column(
-  //               mainAxisAlignment: MainAxisAlignment.end,
-  //               children: <Widget>[
-  //                 Padding(
-  //                     padding: EdgeInsets.only(bottom: 15),
-  //                     child: CircleAvatar(
-  //                       backgroundColor: Colors.black,
-  //                       backgroundImage: AssetImage('assets/images/girl.jpg'),
-  //                       radius: 30,
-  //                     )),
-  //                 Padding(
-  //                     padding: EdgeInsets.only(bottom: 6),
-  //                     child:
-  //                         Text('Spook', style: TextStyle(color: Colors.white))),
-  //                 Text('@spook_clothing',
-  //                     style: TextStyle(color: Colors.white.withOpacity(0.5))),
-  //                 Container(
-  //                     height: 50,
-  //                     margin: EdgeInsets.only(left: 50, right: 50, top: 12),
-  //                     decoration: BoxDecoration(
-  //                       color: Color(0xfe2b54).withOpacity(1),
-  //                       borderRadius: BorderRadius.all(Radius.circular(5)),
-  //                     ),
-  //                     child: Center(
-  //                       child: Text(
-  //                         'Abonnement',
-  //                         style: TextStyle(color: Colors.white),
-  //                       ),
-  //                     ))
-  //               ],
-  //             ),
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   footer() {
     return Column(
@@ -560,19 +397,42 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.home,
-                            color: Colors.white.withOpacity(0.8), size: 30),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            decoration: BoxDecoration(
+                                color: Colors.black45,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Icon(
+                              Icons.message_rounded,
+                              size: 20,
+                              color: Colors.white,
+                            )),
+
+                        // Icon(Icons.home,
+                        //     color: Colors.white.withOpacity(0.8), size: 30),
                         // Text('Accueil',
                         //     style: TextStyle(color: Colors.white, fontSize: 10))
                       ],
                     )),
                 Padding(
-                    padding: EdgeInsets.only(left: 20, right: 11),
+                    padding: EdgeInsets.only(left: 10, right: 0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.search,
-                            color: Colors.white.withOpacity(0.8), size: 30),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            decoration: BoxDecoration(
+                                color: Colors.black45,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Icon(
+                              Icons.menu,
+                              size: 20,
+                              color: Colors.white,
+                            )),
                         // Text('Découvrir',
                         //     style: TextStyle(
                         //         color: Colors.white.withOpacity(0.8),
@@ -583,12 +443,22 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                 //     padding: EdgeInsets.only(left: 20, right: 3),
                 //     child: buttonplus()),
                 Padding(
-                    padding: EdgeInsets.only(left: 10, right: 8),
+                    padding: EdgeInsets.only(left: 10, right: 0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.play_circle_fill_rounded,
-                            color: Colors.white.withOpacity(0.8), size: 30),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            decoration: BoxDecoration(
+                                color: Colors.black45,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Icon(
+                              Icons.play_arrow,
+                              size: 20,
+                              color: Colors.white,
+                            )),
                         // Text('Boîte de réception',
                         //     style: TextStyle(
                         //         color: Colors.white.withOpacity(0.8),
@@ -600,22 +470,32 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.person,
-                            color: Colors.white.withOpacity(0.8), size: 30),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            decoration: BoxDecoration(
+                                color: Colors.black45,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Icon(
+                              Icons.people,
+                              size: 20,
+                              color: Colors.white,
+                            )),
                         // Text('Moi',
                         //     style: TextStyle(
                         //         color: Colors.white.withOpacity(0.8),
                         //         fontSize: 10))
                       ],
                     )),
-                Padding(padding: EdgeInsets.only(left: 90)),
+                Padding(padding: EdgeInsets.only(left: 125)),
                 AnimatedBuilder(
                   animation: animationController,
                   child: CircleAvatar(
                     radius: 22,
-                    backgroundColor: Color(0x222222).withOpacity(1),
+                    backgroundColor: Color(0xff00DBD4).withOpacity(1),
                     child: CircleAvatar(
-                      radius: 12,
+                      radius: 20,
                       backgroundImage: AssetImage('assets/images/girl.jpg'),
                     ),
                   ),
@@ -629,48 +509,4 @@ class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
       ],
     );
   }
-
-//   buttonplus() {
-//     return Container(
-//       width: 46,
-//       height: 30,
-//       decoration: BoxDecoration(
-//           borderRadius: BorderRadius.all(Radius.circular(10)),
-//           color: Colors.transparent),
-//       child: Stack(
-//         children: <Widget>[
-//           Align(
-//             alignment: Alignment.centerLeft,
-//             child: Container(
-//               width: 28,
-//               height: 30,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.all(Radius.circular(10)),
-//                   color: Color(0x2dd3e7).withOpacity(1)),
-//             ),
-//           ),
-//           Align(
-//             alignment: Alignment.centerRight,
-//             child: Container(
-//               width: 28,
-//               height: 30,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.all(Radius.circular(10)),
-//                   color: Color(0xed316a).withOpacity(1)),
-//             ),
-//           ),
-//           Center(
-//             child: Container(
-//               width: 28,
-//               height: 30,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.all(Radius.circular(10)),
-//                   color: Colors.white),
-//               child: Center(child: Icon(Icons.add, color: Colors.black)),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
 }

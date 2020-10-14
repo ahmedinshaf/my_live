@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/live_stream/live_stream.dart';
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/Screens/messages/ChatListPageView.dart';
@@ -395,9 +396,30 @@ class UserProile extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeLive()));
+        },
         backgroundColor: Color(0xff00DBD4),
-        child: Icon(Icons.play_circle_filled_outlined),
+        child: CircleAvatar(
+          radius: 55,
+          backgroundColor: Color(0xff00DBD4),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: Color(0xff00DBD4),
+              radius: 22,
+              child: Text(
+                'Go Live',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomBar(),

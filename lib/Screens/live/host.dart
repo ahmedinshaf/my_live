@@ -12,7 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../utils/setting.dart';
 import 'package:wakelock/wakelock.dart';
 import 'dart:math' as math;
-import 'package:flutter_auth/Screens/live/HearAnim.dart';
+import 'package:flutter_auth/Screens/live_stream/HeartAnim.dart';
 
 class CallPage extends StatefulWidget {
   /// non-modifiable channel name of the page

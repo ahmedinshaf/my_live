@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_auth/Screens/live_stream/live_stream.dart';
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
@@ -108,8 +109,26 @@ class _MyHomePageState extends State<MyHomePage>
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomeLive()));
         },
-        backgroundColor: Color(0xff00DBD4),
-        child: Icon(liveStream),
+        // backgroundColor: Color(0xff00DBD4),
+        child: CircleAvatar(
+          radius: 55,
+          backgroundColor: Color(0xff00DBD4),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: Color(0xff00DBD4),
+              radius: 22,
+              child: Text(
+                'Go Live',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomBar(),

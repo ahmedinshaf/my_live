@@ -50,7 +50,25 @@ class CookieDetail extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Color(0xff00DBD4),
-        child: Icon(Icons.play_circle_filled_outlined),
+        child: CircleAvatar(
+          radius: 55,
+          backgroundColor: Color(0xff00DBD4),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: Color(0xff00DBD4),
+              radius: 22,
+              child: Text(
+                'Go Live',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomBar(),
