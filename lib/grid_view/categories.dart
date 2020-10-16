@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/live_stream/go_live/profile_first.dart';
 
-import 'package:flutter_auth/Screens/live_stream/live_stream.dart';
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    var liveStream = Icons.play_circle_filled_outlined;
+    // var liveStream = Icons.play_circle_filled_outlined;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage>
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeLive()));
+              context, MaterialPageRoute(builder: (context) => ProfileFirst()));
         },
         // backgroundColor: Color(0xff00DBD4),
         child: CircleAvatar(

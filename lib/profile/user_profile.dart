@@ -1,15 +1,47 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/live_stream/live_stream.dart';
+import 'package:flutter_auth/Screens/live_stream/go_live/profile_first.dart';
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/Screens/messages/ChatListPageView.dart';
+import 'package:flutter_auth/profile/image_picker_handler.dart';
 
-class UserProile extends StatelessWidget {
+class UserProile extends StatefulWidget {
+  UserProile({Key key, this.title}) : super(key: key);
+  final String title;
   // final assetPath;
 
   // UserProile({
   //   this.assetPath,
   // });
+  @override
+  _UserProileState createState() => _UserProileState();
+}
+
+class _UserProileState extends State<UserProile>
+    with TickerProviderStateMixin, ImagePickerListener {
+  File _image;
+  AnimationController _controller;
+  ImagePickerHandler imagePicker;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    imagePicker = new ImagePickerHandler(this, _controller);
+    imagePicker.init();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +95,7 @@ class UserProile extends StatelessWidget {
                       colors: [Colors.white, Colors.white])),
               child: Container(
                 width: double.infinity,
-                height: 300.0,
+                height: 280.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,14 +112,54 @@ class UserProile extends StatelessWidget {
                       //       fit: BoxFit.fill,
                       //     ),
                       //   ),
-                      CircleAvatar(
-                        backgroundColor: Color(0xff00FFF7),
-                        radius: 56,
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/girl.jpg'),
-                          radius: 53.0,
+                      GestureDetector(
+                        onTap: () => imagePicker.showDialog(context),
+                        child: new Center(
+                          child: _image == null
+                              ? new Stack(
+                                  children: <Widget>[
+                                    new Center(
+                                      child: new CircleAvatar(
+                                        radius: 50.0,
+                                        backgroundColor:
+                                            const Color(0xFF778899),
+                                      ),
+                                    ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(
+                                    //       left: 200, top: 75),
+                                    //   child:
+                                    //       new Icon(Icons.camera_alt_outlined),
+                                    // ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 17, left: 20, right: 20),
+                                      child: new Center(
+                                        child: new Image.asset(
+                                            "assets/camera.png"),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : new Container(
+                                  height: 80.0,
+                                  width: 80.0,
+                                  decoration: new BoxDecoration(
+                                    color: const Color(0xff7c94b6),
+                                    image: new DecorationImage(
+                                      //image: new ExactAssetImage(_image.path),
+                                      image: new FileImage(_image),
+                                      fit: BoxFit.cover,
+                                    ),
+                                    border: Border.all(
+                                        color: Color(0xff00DBD4), width: 3.0),
+                                    borderRadius: new BorderRadius.all(
+                                        const Radius.circular(50.0)),
+                                  ),
+                                ),
                         ),
                       ),
+
                       SizedBox(
                         height: 5.0,
                       ),
@@ -186,7 +258,7 @@ class UserProile extends StatelessWidget {
                                             ),
                                             children: <TextSpan>[
                                           TextSpan(
-                                              text: '+11',
+                                              text: ' +11',
                                               style: TextStyle(
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold,
@@ -279,44 +351,44 @@ class UserProile extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 27.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Icon(
-                    Icons.wallet_giftcard,
-                    color: Color(0xff00DBD4),
-                    size: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                  ),
-                  FlatButton(
-                    padding: EdgeInsets.fromLTRB(5, -1, 30, 25),
-                    onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => ChatListPageView()));
-                    },
-                    child: Text(
-                      "Wallet",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.0),
-                    ),
-                    color: Colors.white,
-                  )
-                ],
-              ),
-            ),
-          ),
+          // Container(
+          //   child: Padding(
+          //     padding:
+          //         const EdgeInsets.symmetric(vertical: 0.0, horizontal: 27.0),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.start,
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: <Widget>[
+          //         Icon(
+          //           Icons.wallet_giftcard,
+          //           color: Color(0xff00DBD4),
+          //           size: 30,
+          //         ),
+          //         Padding(
+          //           padding: const EdgeInsets.only(right: 15.0),
+          //         ),
+          //         FlatButton(
+          //           padding: EdgeInsets.fromLTRB(5, -1, 30, 25),
+          //           onPressed: () {
+          //             // Navigator.push(
+          //             //     context,
+          //             //     MaterialPageRoute(
+          //             //         builder: (context) => ChatListPageView()));
+          //           },
+          //           child: Text(
+          //             "Wallet",
+          //             style: TextStyle(
+          //                 color: Colors.black,
+          //                 fontStyle: FontStyle.normal,
+          //                 fontWeight: FontWeight.w400,
+          //                 fontSize: 18.0),
+          //           ),
+          //           color: Colors.white,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Container(
             child: Padding(
               padding:
@@ -398,7 +470,7 @@ class UserProile extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeLive()));
+              context, MaterialPageRoute(builder: (context) => ProfileFirst()));
         },
         backgroundColor: Color(0xff00DBD4),
         child: CircleAvatar(
@@ -424,5 +496,12 @@ class UserProile extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomBar(),
     );
+  }
+
+  @override
+  userImage(File _image) {
+    setState(() {
+      this._image = _image;
+    });
   }
 }

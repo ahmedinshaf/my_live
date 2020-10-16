@@ -44,7 +44,13 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Color(0xff00DBD4)),
+          leading: new IconButton(
+              icon: new Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xff00DBD4),
+              ),
+              onPressed: () => Navigator.pop(context)),
+          // iconTheme: IconThemeData(color: Color(0xff00DBD4)),
           centerTitle: true,
           title: Text(
             'Search',

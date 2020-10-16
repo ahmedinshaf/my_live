@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/grid_view/categories.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
 import 'package:flutter_auth/profile/user_profile.dart';
 
@@ -39,10 +40,10 @@ class BottomBar extends StatelessWidget {
                                 color: Color(0xff00DBD4),
                               ),
                               onPressed: () {
-                                // Navigator.pushReplacement(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => CookiePage()));
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MyHomePage()));
                               })
                         ],
                       )),

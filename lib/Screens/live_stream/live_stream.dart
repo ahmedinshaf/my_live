@@ -1,512 +1,595 @@
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+// import 'dart:async';
 
-class HomeLive extends StatefulWidget {
-  @override
-  _Home createState() => _Home();
-}
+// import 'package:flutter/material.dart';
+// import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
+// import 'package:flutter_auth/Screens/live_stream/HeartAnim.dart';
+// import 'package:video_player/video_player.dart';
+// import 'dart:math' as math;
 
-class _Home extends State<HomeLive> with SingleTickerProviderStateMixin {
-  bool abo = false;
-  bool foryou = true;
-  bool play = true;
-  VideoPlayerController _controller;
-  AnimationController animationController;
-  PageController pageController =
-      PageController(initialPage: 0, viewportFraction: 0.8);
-  ScrollController _scrollController = ScrollController(initialScrollOffset: 0);
-  PageController foryouController = new PageController();
+// class HomeLive extends StatefulWidget {
+//   // final assetPath;
 
-  @override
-  void initState() {
-    super.initState();
-    animationController = new AnimationController(
-        vsync: this, duration: new Duration(seconds: 5));
-    animationController.repeat();
-    _controller = VideoPlayerController.asset('assets/videos/vod.mp4')
-      ..initialize().then((value) {
-        _controller.play();
-        _controller.setLooping(true);
-        setState(() {});
-      });
-  }
+//   // HomeLive({
+//   //   this.assetPath,
+//   // });
+//   @override
+//   _HomeLive createState() => _HomeLive();
+// }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-    animationController.dispose();
-  }
+// class _HomeLive extends State<HomeLive> with SingleTickerProviderStateMixin {
+//   bool abo = false;
+//   bool foryou = true;
+//   bool play = true;
+//   bool heart = false;
+//   Timer _timer;
+//   double height = 0.0;
+//   int _numConfetti = 10;
+//   final _random = math.Random();
+//   VideoPlayerController _controller;
+//   AnimationController animationController;
+//   PageController pageController =
+//       PageController(initialPage: 0, viewportFraction: 0.8);
+//   ScrollController _scrollController = ScrollController(initialScrollOffset: 0);
+//   PageController foryouController = new PageController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          homescreen(),
-          footer(),
-          Positioned(
-            bottom: 580,
-            left: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                  decoration: BoxDecoration(
-                      color: Colors.black38,
-                      borderRadius: BorderRadius.all(Radius.circular(35))),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                        child: CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.pink,
-                          child: CircleAvatar(
-                            radius: 12,
-                            backgroundImage:
-                                AssetImage('assets/images/girl.jpg'),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "Emmely",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                          decoration: BoxDecoration(
-                              color: Color(0xff00DBD4),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
-                          child: Icon(
-                            Icons.add,
-                            size: 15,
-                          )),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
+//   // @override
+//   // void initState() {
+//   //   super.initState();
+//   //   animationController = new AnimationController(
+//   //       vsync: this, duration: new Duration(seconds: 5));
+//   //   animationController.repeat();
+//   //   _controller = VideoPlayerController.asset('assets/videos/vod.mp4')
+//   //     ..initialize().then((value) {
+//   //       _controller.play();
+//   //       _controller.setLooping(true);
+//   //       setState(() {});
+//   //     });
+//   // }
 
-                // Divider(color: Colors.white.withOpacity(0.5)),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 7),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                            padding: EdgeInsets.only(left: 1, right: 0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 4, vertical: 4),
-                                  decoration: BoxDecoration(
-                                      color: Colors.black38,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(35))),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 4, vertical: 4),
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(30))),
-                                          child: Icon(
-                                            Icons.star,
-                                            size: 15,
-                                            color: Colors.white,
-                                          )),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        '3 Star',
-                                        style: TextStyle(color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                ),
+//   @override
+//   void dispose() {
+//     super.dispose();
+//     _controller.dispose();
+//     animationController.dispose();
+//   }
 
-                                // Icon(Icons.home,
-                                //     color: Colors.white.withOpacity(0.8), size: 30),
-                                // Text('Accueil',
-                                //     style: TextStyle(color: Colors.white, fontSize: 10))
-                              ],
-                            )),
-                        Padding(
-                            padding: EdgeInsets.only(left: 5, right: 11),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 4, vertical: 4),
-                                  decoration: BoxDecoration(
-                                      color: Colors.black38,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(35))),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 4, vertical: 4),
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(30))),
-                                          child: Icon(
-                                            Icons.fireplace,
-                                            size: 15,
-                                            color: Colors.white,
-                                          )),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text("12.3k",
-                                          style: TextStyle(color: Colors.white))
-                                    ],
-                                  ),
-                                ),
-                                // Text('Découvrir',
-                                //     style: TextStyle(
-                                //         color: Colors.white.withOpacity(0.8),
-                                //         fontSize: 10))
-                              ],
-                            )),
-                        // Padding(
-                        //     padding: EdgeInsets.only(left: 20, right: 3),
-                        //     child: buttonplus()),
+//   void popUp() async {
+//     setState(() {
+//       heart = true;
+//     });
+//     Timer(
+//         Duration(seconds: 4),
+//         () => {
+//               _timer.cancel(),
+//               setState(() {
+//                 heart = false;
+//               })
+//             });
+//     _timer = Timer.periodic(Duration(milliseconds: 125), (Timer t) {
+//       setState(() {
+//         height += _random.nextInt(20);
+//       });
+//     });
+//   }
 
-                        Padding(padding: EdgeInsets.only(left: 90)),
-                      ],
-                    ))
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+//   Widget heartPop() {
+//     final size = MediaQuery.of(context).size;
+//     final confetti = <Widget>[];
+//     for (var i = 0; i < _numConfetti; i++) {
+//       final height = _random.nextInt(size.height.floor());
+//       final width = 20;
+//       confetti.add(HeartAnim(height % 200.0, width.toDouble(), 1));
+//     }
 
-  homescreen() {
-    if (foryou) {
-      return PageView.builder(
-          controller: foryouController,
-          onPageChanged: (index) {
-            setState(() {
-              _controller.seekTo(Duration.zero);
-              _controller.play();
-            });
-          },
-          scrollDirection: Axis.vertical,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Stack(
-              children: <Widget>[
-                FlatButton(
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {
-                      setState(() {
-                        if (play) {
-                          _controller.pause();
-                          play = !play;
-                        } else {
-                          _controller.play();
-                          play = !play;
-                        }
-                      });
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: VideoPlayer(_controller),
-                    )),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 45),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 100,
-                      height: 100,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 0.0, horizontal: 7.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 0),
-                                  ),
-                                  FlatButton(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(35)),
-                                      color: Colors.black45,
-                                      onPressed: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => ChatListPageView()));
-                                      },
-                                      child: RichText(
-                                          text: TextSpan(
-                                              text: 'Sam',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                              ),
-                                              children: <TextSpan>[
-                                            TextSpan(
-                                                text: ' beautiful beautiful',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ))
-                                          ]))
-                                      // color: Colors.white,
-                                      )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 0.0, horizontal: 7.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 28),
-                                    ),
-                                    FlatButton(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(35)),
-                                        color: Colors.black45,
-                                        onPressed: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) => ChatListPageView()));
-                                        },
-                                        child: RichText(
-                                            text: TextSpan(
-                                                text: 'Sam',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                ),
-                                                children: <TextSpan>[
-                                              TextSpan(
-                                                  text: ' beautiful beautiful',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ))
-                                            ]))
-                                        // color: Colors.white,
-                                        )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 65, right: 10),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        width: 70,
-                        height: 400,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(bottom: 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(Icons.favorite,
-                                      size: 55, color: Color(0xff00DBD4)),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ))
-              ],
-            );
-          });
-    } else {
-      _controller.play();
-      return Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-          ));
-    }
-  }
+//     // return Container(
+//     //   child: Padding(
+//     //     padding: const EdgeInsets.only(bottom: 20),
+//     //     child: Align(
+//     //       alignment: Alignment.bottomRight,
+//     //       child: Container(
+//     //         height: 400,
+//     //         width: 200,
+//     //         child: Stack(
+//     //           children: confetti,
+//     //         ),
+//     //       ),
+//     //     ),
+//     //   ),
+//     // );
+//   }
 
-  footer() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        // Divider(color: Colors.white.withOpacity(0.5)),
-        Padding(
-            padding: EdgeInsets.only(bottom: 7),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(left: 10, right: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 4),
-                            decoration: BoxDecoration(
-                                color: Colors.black45,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Icon(
-                              Icons.message_rounded,
-                              size: 20,
-                              color: Colors.white,
-                            )),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: <Widget>[
+//           homescreen(),
+//           footer(),
+//           Positioned(
+//             bottom: 580,
+//             left: 10,
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: <Widget>[
+//                 Container(
+//                   padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+//                   decoration: BoxDecoration(
+//                       color: Colors.black38,
+//                       borderRadius: BorderRadius.all(Radius.circular(35))),
+//                   child: Row(
+//                     children: <Widget>[
+//                       Container(
+//                         padding:
+//                             EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+//                         child: CircleAvatar(
+//                           radius: 14,
+//                           backgroundColor: Colors.pink,
+//                           child: CircleAvatar(
+//                             radius: 12,
+//                             backgroundImage:
+//                                 AssetImage('assets/images/girl.jpg'),
+//                           ),
+//                         ),
+//                       ),
+//                       SizedBox(
+//                         width: 15,
+//                       ),
+//                       Text(
+//                         "Emmely",
+//                         style: TextStyle(color: Colors.white),
+//                       ),
+//                       SizedBox(
+//                         width: 15,
+//                       ),
+//                       Container(
+//                           padding:
+//                               EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+//                           decoration: BoxDecoration(
+//                               color: Color(0xff00DBD4),
+//                               borderRadius:
+//                                   BorderRadius.all(Radius.circular(30))),
+//                           child: Icon(
+//                             Icons.add,
+//                             size: 15,
+//                           )),
+//                     ],
+//                   ),
+//                 ),
+//                 SizedBox(
+//                   height: 10,
+//                 ),
 
-                        // Icon(Icons.home,
-                        //     color: Colors.white.withOpacity(0.8), size: 30),
-                        // Text('Accueil',
-                        //     style: TextStyle(color: Colors.white, fontSize: 10))
-                      ],
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(left: 10, right: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 4),
-                            decoration: BoxDecoration(
-                                color: Colors.black45,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Icon(
-                              Icons.menu,
-                              size: 20,
-                              color: Colors.white,
-                            )),
-                        // Text('Découvrir',
-                        //     style: TextStyle(
-                        //         color: Colors.white.withOpacity(0.8),
-                        //         fontSize: 10))
-                      ],
-                    )),
-                // Padding(
-                //     padding: EdgeInsets.only(left: 20, right: 3),
-                //     child: buttonplus()),
-                Padding(
-                    padding: EdgeInsets.only(left: 10, right: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 4),
-                            decoration: BoxDecoration(
-                                color: Colors.black45,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Icon(
-                              Icons.play_arrow,
-                              size: 20,
-                              color: Colors.white,
-                            )),
-                        // Text('Boîte de réception',
-                        //     style: TextStyle(
-                        //         color: Colors.white.withOpacity(0.8),
-                        //         fontSize: 10))
-                      ],
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(left: 9, right: 15),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 4),
-                            decoration: BoxDecoration(
-                                color: Colors.black45,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Icon(
-                              Icons.people,
-                              size: 20,
-                              color: Colors.white,
-                            )),
-                        // Text('Moi',
-                        //     style: TextStyle(
-                        //         color: Colors.white.withOpacity(0.8),
-                        //         fontSize: 10))
-                      ],
-                    )),
-                Padding(padding: EdgeInsets.only(left: 125)),
-                AnimatedBuilder(
-                  animation: animationController,
-                  child: CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Color(0xff00DBD4).withOpacity(1),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/images/girl.jpg'),
-                    ),
-                  ),
-                  builder: (context, _widget) {
-                    return Transform.rotate(
-                        angle: animationController.value * 6.3, child: _widget);
-                  },
-                )
-              ],
-            ))
-      ],
-    );
-  }
-}
+//                 // Divider(color: Colors.white.withOpacity(0.5)),
+//                 Padding(
+//                     padding: EdgeInsets.only(bottom: 7),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.start,
+//                       children: <Widget>[
+//                         Padding(
+//                             padding: EdgeInsets.only(left: 1, right: 0),
+//                             child: Column(
+//                               mainAxisAlignment: MainAxisAlignment.center,
+//                               children: <Widget>[
+//                                 Container(
+//                                   padding: EdgeInsets.symmetric(
+//                                       horizontal: 4, vertical: 4),
+//                                   decoration: BoxDecoration(
+//                                       color: Colors.black38,
+//                                       borderRadius: BorderRadius.all(
+//                                           Radius.circular(35))),
+//                                   child: Row(
+//                                     children: <Widget>[
+//                                       Container(
+//                                           padding: EdgeInsets.symmetric(
+//                                               horizontal: 4, vertical: 4),
+//                                           decoration: BoxDecoration(
+//                                               borderRadius: BorderRadius.all(
+//                                                   Radius.circular(30))),
+//                                           child: Icon(
+//                                             Icons.star,
+//                                             size: 15,
+//                                             color: Colors.white,
+//                                           )),
+//                                       SizedBox(
+//                                         width: 5,
+//                                       ),
+//                                       Text(
+//                                         '3 Star',
+//                                         style: TextStyle(color: Colors.white),
+//                                       )
+//                                     ],
+//                                   ),
+//                                 ),
+
+//                                 // Icon(Icons.home,
+//                                 //     color: Colors.white.withOpacity(0.8), size: 30),
+//                                 // Text('Accueil',
+//                                 //     style: TextStyle(color: Colors.white, fontSize: 10))
+//                               ],
+//                             )),
+//                         Padding(
+//                             padding: EdgeInsets.only(left: 5, right: 11),
+//                             child: Column(
+//                               mainAxisAlignment: MainAxisAlignment.center,
+//                               children: <Widget>[
+//                                 Container(
+//                                   padding: EdgeInsets.symmetric(
+//                                       horizontal: 4, vertical: 4),
+//                                   decoration: BoxDecoration(
+//                                       color: Colors.black38,
+//                                       borderRadius: BorderRadius.all(
+//                                           Radius.circular(35))),
+//                                   child: Row(
+//                                     children: <Widget>[
+//                                       Container(
+//                                           padding: EdgeInsets.symmetric(
+//                                               horizontal: 4, vertical: 4),
+//                                           decoration: BoxDecoration(
+//                                               borderRadius: BorderRadius.all(
+//                                                   Radius.circular(30))),
+//                                           child: Icon(
+//                                             Icons.fireplace,
+//                                             size: 15,
+//                                             color: Colors.white,
+//                                           )),
+//                                       SizedBox(
+//                                         width: 5,
+//                                       ),
+//                                       Text("12.3k",
+//                                           style: TextStyle(color: Colors.white))
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 // Text('Découvrir',
+//                                 //     style: TextStyle(
+//                                 //         color: Colors.white.withOpacity(0.8),
+//                                 //         fontSize: 10))
+//                               ],
+//                             )),
+//                         // Padding(
+//                         //     padding: EdgeInsets.only(left: 20, right: 3),
+//                         //     child: buttonplus()),
+
+//                         Padding(padding: EdgeInsets.only(left: 90)),
+//                       ],
+//                     ))
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   homescreen() {
+//     if (foryou) {
+//       return PageView.builder(
+//           controller: foryouController,
+//           onPageChanged: (index) {
+//             setState(() {
+//               _controller.seekTo(Duration.zero);
+//               _controller.play();
+//             });
+//           },
+//           scrollDirection: Axis.vertical,
+//           itemCount: 1,
+//           itemBuilder: (context, index) {
+//             return Stack(
+//               children: <Widget>[
+//                 FlatButton(
+//                     padding: EdgeInsets.all(0),
+//                     onPressed: () {
+//                       setState(() {
+//                         if (play) {
+//                           _controller.pause();
+//                           play = !play;
+//                         } else {
+//                           _controller.play();
+//                           play = !play;
+//                         }
+//                       });
+//                     },
+//                     child: Container(
+//                       width: MediaQuery.of(context).size.width,
+//                       height: MediaQuery.of(context).size.height,
+//                       child: VideoPlayer(_controller),
+//                     )),
+//                 Padding(
+//                   padding: EdgeInsets.only(bottom: 45),
+//                   child: Align(
+//                     alignment: Alignment.bottomLeft,
+//                     child: Container(
+//                       width: MediaQuery.of(context).size.width - 100,
+//                       height: 100,
+//                       child: Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: <Widget>[
+//                           Container(
+//                             child: Padding(
+//                               padding: const EdgeInsets.symmetric(
+//                                   vertical: 0.0, horizontal: 7.0),
+//                               child: Row(
+//                                 mainAxisAlignment: MainAxisAlignment.start,
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: <Widget>[
+//                                   Padding(
+//                                     padding: EdgeInsets.only(left: 0),
+//                                   ),
+//                                   FlatButton(
+//                                       shape: RoundedRectangleBorder(
+//                                           borderRadius:
+//                                               BorderRadius.circular(35)),
+//                                       color: Colors.black45,
+//                                       onPressed: () {
+//                                         // Navigator.push(
+//                                         //     context,
+//                                         //     MaterialPageRoute(
+//                                         //         builder: (context) => ChatListPageView()));
+//                                       },
+//                                       child: RichText(
+//                                           text: TextSpan(
+//                                               text: 'Sam',
+//                                               style: TextStyle(
+//                                                 color: Colors.white,
+//                                                 fontWeight: FontWeight.bold,
+//                                                 fontSize: 14.0,
+//                                               ),
+//                                               children: <TextSpan>[
+//                                             TextSpan(
+//                                                 text: ' beautiful beautiful',
+//                                                 style: TextStyle(
+//                                                   color: Colors.white,
+//                                                   fontSize: 14.0,
+//                                                   fontWeight: FontWeight.normal,
+//                                                 ))
+//                                           ]))
+//                                       // color: Colors.white,
+//                                       )
+//                                 ],
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             child: Align(
+//                               alignment: Alignment.bottomRight,
+//                               child: Padding(
+//                                 padding: const EdgeInsets.symmetric(
+//                                     vertical: 0.0, horizontal: 7.0),
+//                                 child: Row(
+//                                   mainAxisAlignment: MainAxisAlignment.start,
+//                                   crossAxisAlignment: CrossAxisAlignment.start,
+//                                   children: <Widget>[
+//                                     Padding(
+//                                       padding: EdgeInsets.only(top: 28),
+//                                     ),
+//                                     FlatButton(
+//                                         shape: RoundedRectangleBorder(
+//                                             borderRadius:
+//                                                 BorderRadius.circular(35)),
+//                                         color: Colors.black45,
+//                                         onPressed: () {
+//                                           // Navigator.push(
+//                                           //     context,
+//                                           //     MaterialPageRoute(
+//                                           //         builder: (context) => ChatListPageView()));
+//                                         },
+//                                         child: RichText(
+//                                             text: TextSpan(
+//                                                 text: 'Sam',
+//                                                 style: TextStyle(
+//                                                   color: Colors.white,
+//                                                   fontWeight: FontWeight.bold,
+//                                                   fontSize: 14.0,
+//                                                 ),
+//                                                 children: <TextSpan>[
+//                                               TextSpan(
+//                                                   text: ' beautiful beautiful',
+//                                                   style: TextStyle(
+//                                                     color: Colors.white,
+//                                                     fontSize: 14.0,
+//                                                     fontWeight:
+//                                                         FontWeight.normal,
+//                                                   ))
+//                                             ]))
+//                                         // color: Colors.white,
+//                                         )
+//                                   ],
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 Padding(
+//                     padding: EdgeInsets.only(bottom: 65, right: 10),
+//                     child: Align(
+//                       alignment: Alignment.bottomRight,
+//                       child: Container(
+//                         width: 70,
+//                         height: 400,
+//                         child: Column(
+//                           mainAxisAlignment: MainAxisAlignment.end,
+//                           children: <Widget>[
+//                             Container(
+//                               padding: EdgeInsets.only(bottom: 0),
+//                               child: Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.center,
+//                                 children: <Widget>[
+//                                   Icon(Icons.favorite,
+//                                       size: 55, color: Color(0xff00DBD4)),
+//                                 ],
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ))
+//               ],
+//             );
+//           });
+//     } else {
+//       _controller.play();
+//       return Container(
+//           width: double.infinity,
+//           height: double.infinity,
+//           color: Colors.black,
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//           ));
+//     }
+//   }
+
+//   footer() {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       children: <Widget>[
+//         // Divider(color: Colors.white.withOpacity(0.5)),
+//         Padding(
+//             padding: EdgeInsets.only(bottom: 7),
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               children: <Widget>[
+//                 Padding(
+//                     padding: EdgeInsets.only(left: 10, right: 0),
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container(
+//                           padding:
+//                               EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+//                           decoration: BoxDecoration(
+//                               color: Colors.black45,
+//                               borderRadius:
+//                                   BorderRadius.all(Radius.circular(30))),
+//                           child: IconButton(
+//                             icon: Icon(
+//                               Icons.message_rounded,
+//                               size: 20,
+//                               color: Colors.white,
+//                             ),
+//                             onPressed: () {
+//                               Navigator.push(
+//                                   context,
+//                                   MaterialPageRoute(
+//                                       builder: (context) => WelcomeScreen()));
+//                             },
+//                           ),
+//                           // child: IconButton(
+//                           //   icon: Icon(
+//                           //     Icons.message_rounded,
+//                           //     color: Colors.white,
+//                           //     size: 20,
+//                           //   ),
+//                           // onPressed: () {
+//                           //   Navigator.push(
+//                           //       context,
+//                           //       MaterialPageRoute(
+//                           //           builder: (context) => WelcomeScreen()));
+//                           // },
+//                           //               onPressed:   Navigator.push(
+//                           // context, MaterialPageRoute(builder: (context) => ProfileFirst()))
+
+//                           // Icon(Icons.home,
+//                           //     color: Colors.white.withOpacity(0.8), size: 30),
+//                           // Text('Accueil',
+//                           //     style: TextStyle(color: Colors.white, fontSize: 10))
+//                         ),
+//                       ],
+//                     )),
+//                 Padding(
+//                     padding: EdgeInsets.only(left: 10, right: 0),
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container(
+//                             padding: EdgeInsets.symmetric(
+//                                 horizontal: 4, vertical: 4),
+//                             decoration: BoxDecoration(
+//                                 color: Colors.black45,
+//                                 borderRadius:
+//                                     BorderRadius.all(Radius.circular(30))),
+//                             child: Icon(
+//                               Icons.menu,
+//                               size: 20,
+//                               color: Colors.white,
+//                             )),
+//                         // Text('Découvrir',
+//                         //     style: TextStyle(
+//                         //         color: Colors.white.withOpacity(0.8),
+//                         //         fontSize: 10))
+//                       ],
+//                     )),
+//                 // Padding(
+//                 //     padding: EdgeInsets.only(left: 20, right: 3),
+//                 //     child: buttonplus()),
+//                 Padding(
+//                     padding: EdgeInsets.only(left: 10, right: 0),
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container(
+//                             padding: EdgeInsets.symmetric(
+//                                 horizontal: 4, vertical: 4),
+//                             decoration: BoxDecoration(
+//                                 color: Colors.black45,
+//                                 borderRadius:
+//                                     BorderRadius.all(Radius.circular(30))),
+//                             child: Icon(
+//                               Icons.play_arrow,
+//                               size: 20,
+//                               color: Colors.white,
+//                             )),
+//                         // Text('Boîte de réception',
+//                         //     style: TextStyle(
+//                         //         color: Colors.white.withOpacity(0.8),
+//                         //         fontSize: 10))
+//                       ],
+//                     )),
+//                 Padding(
+//                     padding: EdgeInsets.only(left: 9, right: 15),
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container(
+//                             padding: EdgeInsets.symmetric(
+//                                 horizontal: 4, vertical: 4),
+//                             decoration: BoxDecoration(
+//                                 color: Colors.black45,
+//                                 borderRadius:
+//                                     BorderRadius.all(Radius.circular(30))),
+//                             child: Icon(
+//                               Icons.people,
+//                               size: 20,
+//                               color: Colors.white,
+//                             )),
+//                         // Text('Moi',
+//                         //     style: TextStyle(
+//                         //         color: Colors.white.withOpacity(0.8),
+//                         //         fontSize: 10))
+//                       ],
+//                     )),
+//                 Padding(padding: EdgeInsets.only(left: 125)),
+//                 AnimatedBuilder(
+//                   animation: animationController,
+//                   child: CircleAvatar(
+//                     radius: 22,
+//                     backgroundColor: Color(0xff00DBD4).withOpacity(1),
+//                     child: CircleAvatar(
+//                       radius: 20,
+//                       backgroundImage: AssetImage('assets/images/girl.jpg'),
+//                     ),
+//                   ),
+//                   builder: (context, _widget) {
+//                     return Transform.rotate(
+//                         angle: animationController.value * 6.3, child: _widget);
+//                   },
+//                 )
+//               ],
+//             ))
+//       ],
+//     );
+//   }
+// }

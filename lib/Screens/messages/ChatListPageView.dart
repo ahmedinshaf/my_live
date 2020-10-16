@@ -34,9 +34,13 @@ class _ChatListPageViewState extends State<ChatListPageView> {
             centerTitle: true,
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(
-              color: Color(0xff00DBD4),
-            ),
+            leading: new IconButton(
+                icon: new Icon(
+                  Icons.arrow_back_ios,
+                  color: Color(0xff00DBD4),
+                ),
+                onPressed: () => Navigator.pop(context)),
+
             // centerTitle: true,
             title: Padding(
               padding: const EdgeInsets.only(right: 0),

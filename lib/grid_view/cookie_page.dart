@@ -46,36 +46,15 @@ class CookiePage extends StatelessWidget {
                       )));
             },
             child: Container(
-                // decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(35.0),
-                //     boxShadow: [
-                //       BoxShadow(
-                //           color: Colors.grey.withOpacity(0.2),
-                //           spreadRadius: 3.0,
-                //           blurRadius: 5.0)
-                //     ],
-                //     color: Colors.white),
                 child: Column(children: [
               Padding(
                   padding: EdgeInsets.all(0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    // children: [
-                    //   isFavorite
-                    //       ? Icon(Icons.favorite, color: Color(0xFFEF7532))
-                    //       : Icon(Icons.favorite_border,
-                    //           color: Color(0xFFEF7532))
-                    // ]
                   )),
               Hero(
                   tag: imgPath,
                   child: Container(
-                    // child: Text('Test',
-                    //     textAlign: TextAlign.center,
-                    //     style: TextStyle(
-                    //       color: Colors.white,
-                    //       fontSize: 20.0,
-                    //     )),
                     height: 165.0,
                     width: 175.0,
                     decoration: BoxDecoration(
@@ -102,20 +81,6 @@ class CookiePage extends StatelessWidget {
                       ),
                     ),
                   )),
-              // SizedBox(height: 7.0),
-              // Text(price,
-              //     style: TextStyle(
-              //         color: Color(0xFFCC8053),
-              //         fontFamily: 'Varela',
-              //         fontSize: 14.0)),
-              // Text(name,
-              //     style: TextStyle(
-              //         color: Color(0xFF575E67),
-              //         fontFamily: 'Varela',
-              //         fontSize: 14.0)),
-              // Padding(
-              //     padding: EdgeInsets.all(0.0),
-              //     child: Container(color: Color(0xFFEBEBEB), height: 1.0)),
               Padding(
                   padding: EdgeInsets.only(top: 0.0, bottom: 0.0),
                   child: Row(

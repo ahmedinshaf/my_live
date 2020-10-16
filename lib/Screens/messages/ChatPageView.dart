@@ -97,7 +97,7 @@ class _ChatPageViewState extends State<ChatPageView> {
                           IconButton(
                             padding: EdgeInsets.only(bottom: 20),
                             icon: Icon(
-                              Icons.arrow_back,
+                              Icons.arrow_back_ios,
                               color: Color(0xff00DBD4),
                             ),
                             onPressed: () {
