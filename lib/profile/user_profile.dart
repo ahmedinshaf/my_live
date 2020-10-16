@@ -5,6 +5,7 @@ import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/Screens/messages/ChatListPageView.dart';
 import 'package:flutter_auth/profile/image_picker_handler.dart';
+import 'package:flutter_auth/Screens/my_posts/postCategories.dart';
 
 class UserProile extends StatefulWidget {
   UserProile({Key key, this.title}) : super(key: key);
@@ -294,10 +295,13 @@ class _UserProileState extends State<UserProile>
                   FlatButton(
                     padding: EdgeInsets.fromLTRB(5, -1, 30, 25),
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => ChatListPageView()));
+                    
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>PostCategories()
+                              ));
+                  
                     },
                     child: Text(
                       "My Post",

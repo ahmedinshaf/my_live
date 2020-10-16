@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/live_stream/go_live/profile_first.dart';
-
-import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
-import 'package:flutter_auth/grid_view/bottom_bar.dart';
+// import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
-import 'package:flutter_auth/widgets/main_drawer.dart';
 
-class MyHomePage extends StatefulWidget {
+class PostCategories extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _PostCategoriesState createState() => _PostCategoriesState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _PostCategoriesState extends State<PostCategories>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
@@ -23,13 +19,37 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    // var liveStream = Icons.play_circle_filled_outlined;
+    var liveStream = Icons.play_circle_filled_outlined;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
+         leading: IconButton(icon:Icon(
+        Icons.arrow_back_ios,color: Color(0xff00FFF7),
+        ),
+       onPressed: ()=> Navigator.pop(context),
+      ),
+
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
+         title: Center(
+           child: Text('My Posts',           
+            style: TextStyle(fontSize: 35,
+             fontWeight:FontWeight.bold,
+             color: Color(0xff00FFF7,
+            
+            ),
+          ),
+       
+      
+
+        ),
+        ),
+      
+      
+        
+//        title: Center(
+//            child: Text('My Posts',    
         // leading: IconButton(
         //   icon: Icon(Icons.search, color: Color(0xFF545D68)),
         //   alignment: Alignment.centerRight,
@@ -41,28 +61,23 @@ class _MyHomePageState extends State<MyHomePage>
         //         fontFamily: 'Varela',
         //         fontSize: 20.0,
         //         color: Color(0xFF545D68))),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, color: Color(0xFF545D68)),
-            alignment: Alignment.centerLeft,
-            padding: new EdgeInsets.all(0),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SearchBarScreen()));
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.notifications_none, color: Color(0xFF545D68)),
-            alignment: Alignment.centerLeft,
-            padding: new EdgeInsets.all(0),
-            onPressed: () {},
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.search, color: Color(0xFF545D68)),
+        //     alignment: Alignment.centerLeft,
+        //     padding: new EdgeInsets.all(0),                             //40-53 commented
+        //     onPressed: () {},
+        //   ),
+        //   IconButton(
+        //     icon: Icon(Icons.notifications_none, color: Color(0xFF545D68)),
+        //     alignment: Alignment.centerLeft,
+        //     padding: new EdgeInsets.all(0),
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
-        endDrawer: MainDrawer(),
-
       body: ListView(
-        padding: EdgeInsets.only(left: 20.0),
+        padding: EdgeInsets.only(left: 13.0),
         children: <Widget>[
           // SizedBox(height: 15.0),
           // Text('Categories',
@@ -82,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage>
               unselectedLabelStyle: TextStyle(fontSize: 20.0),
               tabs: [
                 Tab(
-                  child: Text('Nearby',
+                  child: Text('Post',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         // fontFamily: 'Varela',
@@ -90,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage>
                       )),
                 ),
                 Tab(
-                  child: Text('Popular',
+                  child: Text('Liked',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         // fontFamily: 'Varela',
@@ -100,41 +115,26 @@ class _MyHomePageState extends State<MyHomePage>
               ]),
           Container(
               height: MediaQuery.of(context).size.height - 150.0,
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width - 150.0,
+              // width: double.infinity,
               child: TabBarView(controller: _tabController, children: [
                 CookiePage(),
                 CookiePage(),
+                // CookiePage(),
+
               ]))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ProfileFirst()));
-        },
-        // backgroundColor: Color(0xff00DBD4),
-        child: CircleAvatar(
-          radius: 55,
-          backgroundColor: Color(0xff00DBD4),
-          child: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.white,
-            child: CircleAvatar(
-              backgroundColor: Color(0xff00DBD4),
-              radius: 22,
-              child: Text(
-                'Go Live',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomBar(),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     // Navigator.push(
+      //     //     context, MaterialPageRoute(builder: (context) => HomePageLive()));
+      //   },
+      //   backgroundColor: Color(0xff00DBD4),                 //101-110 commented
+      //   child: Icon(liveStream),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // bottomNavigationBar: BottomBar(),//no need
     );
   }
 }
