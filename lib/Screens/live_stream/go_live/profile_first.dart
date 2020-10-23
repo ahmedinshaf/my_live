@@ -1,8 +1,11 @@
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/live/home.dart';
 import 'package:flutter_auth/Screens/live/host.dart';
 import 'package:flutter_auth/Screens/live/join.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfileFirst extends StatefulWidget {
   ProfileFirst({Key key, this.title}) : super(key: key);
@@ -14,6 +17,22 @@ class ProfileFirst extends StatefulWidget {
 }
 
 class _ProfileFirstState extends State<ProfileFirst> {
+  @override
+  void initState() {
+    super.initState();
+    // initialize agora sdk
+    // initialize();
+    // userMap = {widget.channelName: widget.image};
+    //_createClient();
+    _handleCameraAndMic();
+  }
+
+  Future<void> _handleCameraAndMic() async {
+    await PermissionHandler().requestPermissions(
+      [PermissionGroup.camera, PermissionGroup.microphone],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -200,7 +219,7 @@ class _ProfileFirstState extends State<ProfileFirst> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 630, left: 80, right: 80, bottom: 20),
+          padding: EdgeInsets.only(top: 560, left: 80, right: 80, bottom: 90),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
             decoration: BoxDecoration(
@@ -219,7 +238,11 @@ class _ProfileFirstState extends State<ProfileFirst> {
                     width: 5,
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CallPage()));
+                      // HomePageLive
+                    },
                     child: Text(
                       'Go Live',
                       textAlign: TextAlign.right,
@@ -237,4 +260,28 @@ class _ProfileFirstState extends State<ProfileFirst> {
       ]),
     );
   }
+
+  // Future<void> onCreate({username, image}) async {
+  //   // await for camera and mic permissions before pushing video page
+  //   await _handleCameraAndMic();
+  //   var date = DateTime.now();
+  //   var currentTime = '${DateFormat("dd-MM-yyyy hh:mm:ss").format(date)}';
+  //   //push video page with given channel name
+  //   await Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => CallPage(
+  //         channelName: username,
+  //         time: currentTime,
+  //         image: image,
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  // Future<void> _handleCameraAndMic() async {
+  //   await PermissionHandler().requestPermissions(
+  //     [PermissionGroup.camera, PermissionGroup.microphone],
+  //   );
+  // }
 }
