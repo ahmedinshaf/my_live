@@ -59,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ],
       ),
-        endDrawer: MainDrawer(),
-
+      endDrawer: MainDrawer(),
       body: ListView(
         padding: EdgeInsets.only(left: 20.0),
         children: <Widget>[

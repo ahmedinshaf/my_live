@@ -102,10 +102,10 @@ class _HomePageLiveState extends State<HomePageLive> {
         //       color: Colors.white,
         //     )),
         titleSpacing: -10,
-        title: Text(
-          'TrailblazA',
-          style: TextStyle(fontFamily: 'Oswald-Regular', fontSize: 27),
-        ),
+        // title: Text(
+        //   'TrailblazA',
+        //   style: TextStyle(fontFamily: 'Oswald-Regular', fontSize: 27),
+        // ),
         // actions: <Widget>[
         //   Padding(
         //     padding: const EdgeInsets.only(right: 12.0),
@@ -124,7 +124,7 @@ class _HomePageLiveState extends State<HomePageLive> {
         //       )
         //   ),*/
         // ],
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.black,
       ),
       body: Container(
           color: Colors.black,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/live/lineMain.dart';
+import 'package:flutter_auth/Screens/live/loginScreen.dart';
+import 'package:flutter_auth/grid_view/categories.dart';
 import 'package:flutter_auth/grid_view/cookie_detail.dart';
 
 class CookiePage extends StatelessWidget {
@@ -41,8 +44,10 @@ class CookiePage extends StatelessWidget {
         child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CookieDetail(
-                        assetPath: imgPath,
+                  // builder: (context) => CookieDetail(
+                  builder: (context) => LoginScreen(
+                      // assetPath: imgPath,
+
                       )));
             },
             child: Container(
