@@ -55,10 +55,18 @@ class _MyHomePageState extends State<MyHomePage>
             icon: Icon(Icons.notifications_none, color: Color(0xFF545D68)),
             alignment: Alignment.centerLeft,
             padding: new EdgeInsets.all(0),
-            onPressed: () {},
+            onPressed: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => MainDrawer()));
+            }
+                   
+            // onPressed: () {},
           ),
+          
         ],
+       
       ),
+      
       endDrawer: MainDrawer(),
       body: ListView(
         padding: EdgeInsets.only(left: 20.0),

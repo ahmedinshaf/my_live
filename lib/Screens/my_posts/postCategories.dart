@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
+import 'package:flutter_auth/Screens/my_posts/postsCookie.dart';
 
 class PostCategories extends StatefulWidget {
   @override
@@ -118,8 +119,8 @@ class _PostCategoriesState extends State<PostCategories>
               width: MediaQuery.of(context).size.width - 150.0,
               // width: double.infinity,
               child: TabBarView(controller: _tabController, children: [
-                CookiePage(),
-                CookiePage(),
+               PostsCookie(),
+               PostsCookie(),
                 // CookiePage(),
 
               ]))

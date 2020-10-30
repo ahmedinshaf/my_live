@@ -12,24 +12,26 @@ class PostsCookie extends StatelessWidget {
         children: <Widget>[
           SizedBox(height: 15.0),
           Container(
-              padding: EdgeInsets.only(right: 20.0),
+               padding: EdgeInsets.all(15),
+              // padding: EdgeInsets.only(right: 20.0),
               width: MediaQuery.of(context).size.width - 30.0,
               height: MediaQuery.of(context).size.height - 30.0,
               child: GridView.count(
                 crossAxisCount: 3,
                  primary: false,
-                crossAxisSpacing: 2.0,
-                mainAxisSpacing: 2.0,
-                childAspectRatio: 0.8,
+                crossAxisSpacing: 4.0,
+                mainAxisSpacing: 50.0,
+                childAspectRatio: 0.5,
                 children: <Widget>[
                   _buildCard('assets/images/girl_two.jpg', context),
                   _buildCard('assets/images/girl_eight.jpg', context),
                   _buildCard('assets/images/girl_five.jpg', context),
-                  _buildCard('assets/images/girl_six.jpg', context),
-                  _buildCard('assets/images/girl_girl.jpg', context),
-                  _buildCard('assets/images/girl_four.jpeg', context),
-                  // _buildCard('assets/images/girl_six.jpeg', context),
-                  // _buildCard('assets/images/girl_six.jpeg', context),
+                  // _buildCard('assets/images/girl_six.jpg', context),
+                  // _buildCard('assets/images/girl_girl.jpg', context),
+                  // _buildCard('assets/images/girl_four.jpeg', context),
+                  _buildCard('assets/images/girl_six.jpeg', context),
+                  _buildCard('assets/images/Girl-Smiling.jpg', context),
+                 _buildCard('assets/images/girlhair.jpg', context),
                   // _buildCard('assets/images/girl_six.jpeg', context),
                 ],
               )),
@@ -41,7 +43,7 @@ class PostsCookie extends StatelessWidget {
 
   Widget _buildCard(String imgPath, context) {
     return Padding(
-        padding: EdgeInsets.only(top: 3.0, bottom: 3.0, left: 3.0, right: 3.0),
+        padding: EdgeInsets.only(top: 10.0, bottom: 15.0, left: 3.0, right: 3.0),
         child: InkWell(
             // onTap: () {
             //   Navigator.of(context).push(MaterialPageRoute(    // 41-46 commented
@@ -77,7 +79,7 @@ class PostsCookie extends StatelessWidget {
                       height: 175.0,
                       width: 175.0,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35.0),
+                          borderRadius: BorderRadius.circular(0.0),
                           border: Border.all(
                             color: Color(0xff00DBD4),
                           ),
