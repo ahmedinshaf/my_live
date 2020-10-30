@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/my_posts/postsCookie.dart';
 // import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
 
@@ -23,33 +24,32 @@ class _PostCategoriesState extends State<PostCategories>
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-         leading: IconButton(icon:Icon(
-        Icons.arrow_back_ios,color: Color(0xff00FFF7),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xff00FFF7),
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
-       onPressed: ()=> Navigator.pop(context),
-      ),
 
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
-         title: Center(
-           child: Text('My Posts',           
-            style: TextStyle(fontSize: 35,
-             fontWeight:FontWeight.bold,
-             color: Color(0xff00FFF7,
-            
+        title: Center(
+          child: Text(
+            'My Posts',
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+              color: Color(
+                0xff00FFF7,
+              ),
             ),
           ),
-       
-      
+        ),
 
-        ),
-        ),
-      
-      
-        
 //        title: Center(
-//            child: Text('My Posts',    
+//            child: Text('My Posts',
         // leading: IconButton(
         //   icon: Icon(Icons.search, color: Color(0xFF545D68)),
         //   alignment: Alignment.centerRight,
@@ -118,10 +118,9 @@ class _PostCategoriesState extends State<PostCategories>
               width: MediaQuery.of(context).size.width - 150.0,
               // width: double.infinity,
               child: TabBarView(controller: _tabController, children: [
-                CookiePage(),
-                CookiePage(),
+                PostsCookie(),
+                PostsCookie(),
                 // CookiePage(),
-
               ]))
         ],
       ),

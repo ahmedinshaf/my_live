@@ -44,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setBool('login', true);
         //Navigator.popUntil(context, ModalRoute.withName('/HomeScreen'));
-        //Navigator.push(
-           // context, MaterialPageRoute(builder: (context) => HomePageLive()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePageLive()));
         break;
     }
   }
@@ -225,15 +225,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'TrailblazA',
-                    style: TextStyle(
-                      fontFamily: 'Oswald-Regular',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 45.0,
-                    ),
-                  ),
+                  // Text(
+                  //   'TrailblazA',
+                  //   style: TextStyle(
+                  //     fontFamily: 'Oswald-Regular',
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Colors.white,
+                  //     fontSize: 45.0,
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 38,
                   ),
@@ -328,6 +328,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? _submit
                               : null,
                           color: Colors.blue,
+                          //color: Color(0xff00DBD4),
                           disabledColor: Colors.blue[800],
                           disabledTextColor: Colors.white60,
                           textColor: Colors.white,
