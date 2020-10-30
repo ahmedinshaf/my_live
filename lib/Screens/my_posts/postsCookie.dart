@@ -32,6 +32,7 @@ class PostsCookie extends StatelessWidget {
                   _buildCard('assets/images/girl_six.jpeg', context),
                   _buildCard('assets/images/Girl-Smiling.jpg', context),
                  _buildCard('assets/images/girlhair.jpg', context),
+               
                   // _buildCard('assets/images/girl_six.jpeg', context),
                 ],
               )),
@@ -126,7 +127,9 @@ class PostsCookie extends StatelessWidget {
                     //       color: Color(0xFFD17E50), size: 12.0),
                     // ]
                     // ]
+                  
                   ))
             ]))));
+       
   }
 }

@@ -62,7 +62,9 @@ class _RegScreenState extends State<RegScreen> {
         await prefs.setBool('login', true);
         //Navigator.popUntil(context, ModalRoute.withName('/HomeScreen'));
         Navigator.push(
+
         context, MaterialPageRoute(builder: (context) => HomePageLive()));
+
 
         break;
       case -1:
