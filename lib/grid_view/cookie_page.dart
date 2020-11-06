@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/live/SplashScreen.dart';
 import 'package:flutter_auth/Screens/live/lineMain.dart';
 import 'package:flutter_auth/Screens/live/loginScreen.dart';
+import 'package:flutter_auth/Screens/my_posts/postsCookie.dart';
 import 'package:flutter_auth/grid_view/categories.dart';
 import 'package:flutter_auth/grid_view/cookie_detail.dart';
 
@@ -43,6 +45,7 @@ class CookiePage extends StatelessWidget {
         padding: EdgeInsets.only(top: 3.0, bottom: 3.0, left: 3.0, right: 3.0),
         child: InkWell(
             onTap: () {
+
               Navigator.of(context).push(MaterialPageRoute(
                   // builder: (context) => CookieDetail(
                   builder: (context) => LoginScreen(
