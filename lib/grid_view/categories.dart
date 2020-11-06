@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/live_stream/go_live/profile_first.dart';
 
 import 'package:flutter_auth/Screens/serach_bar/SearchBarScreen.dart';
 import 'package:flutter_auth/grid_view/bottom_bar.dart';
 import 'package:flutter_auth/grid_view/cookie_page.dart';
+import 'package:flutter_auth/models/user.dart';
 import 'package:flutter_auth/widgets/main_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,6 +17,27 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+
+  FirebaseUser user;
+  var isLoggedIn =false;
+
+  _userLoggedIn() async{
+    try {
+      FirebaseUser userData = await FirebaseAuth.instance.currentUser();
+      if (userData != null) {
+        setState(() {
+          user = userData;
+        });
+      }
+      if (user.uid != null) {
+        setState(() {
+          this.isLoggedIn = true;
+        });
+      }
+    }catch(err){
+      print(err.toString());
+    }
+  }
 
   @override
   void initState() {
@@ -115,9 +139,16 @@ class _MyHomePageState extends State<MyHomePage>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ProfileFirst()));
+        onPressed: () async{
+          await _userLoggedIn();
+          if(isLoggedIn == true) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileFirst()));
+          }else {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LoginScreen()));
+          }
         },
         // backgroundColor: Color(0xff00DBD4),
         child: CircleAvatar(
