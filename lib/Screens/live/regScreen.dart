@@ -31,6 +31,7 @@ class _RegScreenState extends State<RegScreen> {
       invalidError = false,
       passwordError = false;
 
+
   void _submit() async {
     setState(() {
       submitted = true;
