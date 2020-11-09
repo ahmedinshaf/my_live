@@ -3,6 +3,7 @@ import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/components/background.dart';
 import 'package:flutter_auth/Screens/Signup/components/or_divider.dart';
 import 'package:flutter_auth/Screens/Signup/components/social_icon.dart';
+import 'package:flutter_auth/Screens/live_stream/go_live/profile_first.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -62,13 +63,15 @@ class _BodyState extends State<Body> {
               RoundedButton(
                 text: "SIGNUP",
                 press: () async{
-                  print(this.email);
-                  print(this.password);
                   try{
                     var response = await registerUser(
                         email: this.email,
                         pass: this.password);
-                    print(response);
+                        if(response == 1){
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return ProfileFirst();
+                          }));
+                        }
                   }catch(err){
                     print(err.toString());
                   }

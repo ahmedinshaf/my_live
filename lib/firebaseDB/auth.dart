@@ -37,25 +37,28 @@ import 'package:shared_preferences/shared_preferences.dart';
   Future<int> registerUser({email, name, pass, username, image}) async {
     var _auth = FirebaseAuth.instance;
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('name', name);
-      await prefs.setString('username', username);
-      var userNameExists = await FireStoreClass.checkUsername(
-          username: username);
-      if (!userNameExists) {
-        return -1;
+      if(name != null && username != null){
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('name', name);
+        await prefs.setString('username', username);
+        var userNameExists = await FireStoreClass.checkUsername(
+            username: username);
+        if (!userNameExists) {
+          return -1;
+        }
+        var result = await _auth.createUserWithEmailAndPassword(
+            email: email, password: pass);
+        var user = result.user;
+        var info = UserUpdateInfo();
+        info.displayName = name;
+        info.photoUrl = '/';
+
+        await user.updateProfile(info);
+        await FireStoreClass.regUser(
+            name: name, email: email, username: username, image: image);
       }
-      var result = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
           email: email, password: pass);
-
-      var user = result.user;
-      var info = UserUpdateInfo();
-      info.displayName = name;
-      info.photoUrl = '/';
-
-      await user.updateProfile(info);
-      await FireStoreClass.regUser(
-          name: name, email: email, username: username, image: image);
       return 1;
     } catch (e) {
       print(e.code);
