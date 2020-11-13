@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_auth/firebaseDB/firestoreDB.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:agora_rtm/agora_rtm.dart';
@@ -36,6 +38,7 @@ class _CallPageState extends State<CallPage> {
   String channelName;
   List<User> userList = [];
 
+  final databaseReference = Firestore.instance;
   bool _isLogin = true;
   bool _isInChannel = true;
   int userNo = 0;
@@ -60,7 +63,7 @@ class _CallPageState extends State<CallPage> {
   int _numConfetti = 5;
   int guestID = -1;
   bool waiting = false;
-
+  String id;
   @override
   void dispose() {
     // clear users
@@ -76,7 +79,22 @@ class _CallPageState extends State<CallPage> {
     super.initState();
     // initialize agora sdk
     initialize();
+    final img =
+        'https://nichemodels.co/wp-content/uploads/2019/03/user-dummy-pic.png';
     userMap = {widget.channelName: widget.image};
+    Map<String, dynamic> data = {
+      'id': 'teId',
+      'channel': 23489,
+      'image': img,
+      'name': 'test',
+      'time': '26-10-2020 08:56:21'
+    };
+    databaseReference.collection('liveuser').add(data).then((doc) {
+      print(doc.documentID);
+      id = doc.documentID;
+    }).catchError((error) {
+      print(error);
+    });
     //_createClient();
     _handleCameraAndMic();
   }
@@ -529,7 +547,14 @@ class _CallPageState extends State<CallPage> {
                         _leaveChannel();
                         AgoraRtcEngine.leaveChannel();
                         AgoraRtcEngine.destroy();
-                        FireStoreClass.deleteUser(username: channelName);
+                        databaseReference
+                            .collection('liveuser')
+                            .document(id)
+                            .delete()
+                            .catchError((e) {
+                          print(e);
+                        });
+                        // FireStoreClass.deleteUser(username: channelName);
                         Navigator.pop(context);
                       },
                     ),

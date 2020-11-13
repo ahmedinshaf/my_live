@@ -219,7 +219,7 @@ class _ProfileFirstState extends State<ProfileFirst> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 560, left: 80, right: 80, bottom: 90),
+          padding: EdgeInsets.only(top: 300, left: 80, right: 80, bottom: 190),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
             decoration: BoxDecoration(
